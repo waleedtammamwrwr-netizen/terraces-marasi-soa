@@ -169,8 +169,14 @@ a.att:hover{border-color:var(--accent)}
 </div>
 <p class="note">All amounts in AED.</p>
 
-<h3>Unit 1004 <span class="tag t-exp">Fully settled</span></h3>
+<h2>Total – previous contracts</h2>
+<p class="hint">Click a unit number to show its payment history.</p>
 <div class="wrap">
+<table>
+<thead><tr><th>Unit</th><th class="n">Rent due</th><th class="n">Paid to owner</th><th class="n">Balance</th></tr></thead>
+<tbody>
+<tr class="unitrow" data-unit="1004" data-target="p-1004"><td><button type="button" class="u" aria-expanded="false" aria-controls="p-1004"><span class="chev">&#9654;</span>1004</button> <span class="tag t-exp">Fully settled</span></td><td class="n">485,630.23</td><td class="n">485,630.23</td><td class="n">0.00</td></tr>
+<tr class="detail" id="p-1004"><td colspan="4">
 <table>
 <thead><tr><th>Date</th><th>Description</th><th class="n">Rent due</th><th class="n">Paid to owner</th><th class="n">Balance</th></tr></thead>
 <tbody>
@@ -186,11 +192,10 @@ a.att:hover{border-color:var(--accent)}
 <tr class="tot"><td></td><td>Total – Unit 1004</td><td class="n">485,630.23</td><td class="n">485,630.23</td><td class="n">0.00</td></tr>
 </tbody>
 </table>
-</div>
 <p class="note">Year 2 early termination: the tenant paid 270,000 in advance. 77,671.23 for 105 days of rent used plus a 45,000 penalty = 122,671.23 paid to you; 147,328.77 refunded to the tenant. Unit vacated 31/08/2026.</p>
-
-<h3>Unit 1702 <span class="tag t-exp">Fully settled</span></h3>
-<div class="wrap">
+</td></tr>
+<tr class="unitrow" data-unit="1702" data-target="p-1702"><td><button type="button" class="u" aria-expanded="false" aria-controls="p-1702"><span class="chev">&#9654;</span>1702</button> <span class="tag t-exp">Fully settled</span></td><td class="n">437,191.99</td><td class="n">437,191.99</td><td class="n">0.00</td></tr>
+<tr class="detail" id="p-1702"><td colspan="4">
 <table>
 <thead><tr><th>Date</th><th>Description</th><th class="n">Rent due</th><th class="n">Paid to owner</th><th class="n">Balance</th></tr></thead>
 <tbody>
@@ -204,15 +209,7 @@ a.att:hover{border-color:var(--accent)}
 <tr class="tot"><td></td><td>Total – Unit 1702</td><td class="n">437,191.99</td><td class="n">437,191.99</td><td class="n">0.00</td></tr>
 </tbody>
 </table>
-</div>
-
-<h2>Total – previous contracts</h2>
-<div class="wrap">
-<table>
-<thead><tr><th>Unit</th><th class="n">Rent due</th><th class="n">Paid to owner</th><th class="n">Balance</th></tr></thead>
-<tbody>
-<tr><td>1004</td><td class="n">485,630.23</td><td class="n">485,630.23</td><td class="n">0.00</td></tr>
-<tr><td>1702</td><td class="n">437,191.99</td><td class="n">437,191.99</td><td class="n">0.00</td></tr>
+</td></tr>
 <tr class="tot"><td>Total</td><td class="n">922,822.22</td><td class="n">922,822.22</td><td class="n">0.00</td></tr>
 </tbody>
 </table>
@@ -226,9 +223,9 @@ a.att:hover{border-color:var(--accent)}
 </div>
 <script>
 (function(){
-  function rowFor(u){ return document.querySelector('tr.unitrow[data-unit="' + u + '"]'); }
+  function rowFor(u){ return document.querySelector('#active tr.unitrow[data-unit="' + u + '"]'); }
   function setOpen(row, open){
-    var d = document.getElementById('d-' + row.getAttribute('data-unit'));
+    var d = document.getElementById(row.getAttribute('data-target') || ('d-' + row.getAttribute('data-unit')));
     row.classList.toggle('open', open);
     if (d) d.classList.toggle('open', open);
     var b = row.querySelector('button.u');
